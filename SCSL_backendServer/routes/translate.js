@@ -14,13 +14,21 @@ router.post('/translate', async (req, res) => {
 
 const removeFile = async () => {
   if(os.platform() === 'win32') { 
-    await fs.unlink('.\\external_libs\\input.txt', (err) => {
-      if (err) throw err
-    })
+    try{
+      await fs.unlink('.\\external_libs\\input.txt', (err) => {
+        if (err) throw err
+      })
+    }catch (err) {
+      console.log(err)
+    }
   } else{
-    await fs.unlink('./external_libs/input.txt', (err) => {
-      if (err) throw err
-    })
+    try{
+      await fs.unlink('./external_libs/input.txt', (err) => {
+        if (err) throw err
+      })
+    }catch (err) {  
+      console.log(err)
+    }
   }
 }
 
