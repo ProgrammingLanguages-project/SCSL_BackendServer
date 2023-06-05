@@ -1,1 +1,1 @@
-a
+NAME:["hola"]PROPS:[prop_var1 = 5]FUNCTIONS:[function_sum() {var1 = var1 + 1;}]STYLES:[button {    color: "blue";}]RENDER:[element_div{}]
