@@ -4,7 +4,7 @@ const {exec} = require('child_process')
 const fs = require('fs')
 const os = require('os')
 
-router.post('/', async (req, res) => {
+router.post('/translate', async (req, res) => {
   await removeFile()  
   // console.log(req.body);
   await storeTextToFile(req.body.SCSL)
@@ -56,5 +56,13 @@ const callTranslationService = async () => {
     }      
   })
 }
+
+router.get("/translate" , async (req, res) => {
+  res.render('index', { });
+})
+
+router.get("/translate/svelte_result" , async (req, res) => { 
+  res.render('svelte', { });
+});
 
 module.exports = router

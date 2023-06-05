@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SCSL translator</title>
+</head>
+<body>
+  <div id="container">
+    <h1>SCSL translator</h1>
+    <form id="myForm" action="" method="post">
+        <textarea name="myText" id="myText" spellcheck="false" ></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const myText = document.getElementById('myText').value;
+            const data = { "SCSL" : myText };
+            fetch('/translate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                //console.log(data["Svelte"]);
+                localStorage.setItem('svelte', data["Svelte"]);
+                window.location.href = '/translate/svelte_result';
+            })
+            .catch(error => console.error(error))
+        });
+
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {            
+          this.style.height = 'auto';           
+          this.style.height = Math.max(160 ,this.scrollHeight) + 'px';
+        }); 
+    </script>
+  </div>
+</body>
+
+<style>
+  
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+textarea {
+    width: 100%;
+    height: 400px;
+    resize: none;
+}
+
+#container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+</style>
+</html>

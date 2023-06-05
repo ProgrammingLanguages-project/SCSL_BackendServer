@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SCSL translator</title>
+</head>
+<body>
+  <div id="container">
+    <h1>Svelte Component</h1>
+    <div id="component"> </div>
+  </div>
+  <script>
+    function getSvelteComponent() {
+      const svelte = localStorage.getItem('svelte');
+      console.log(svelte)
+      const component = document.getElementById('component');
+      const pre = document.createElement('pre');
+      const textNode = document.createTextNode(svelte);
+      pre.appendChild(textNode);
+      component.appendChild(pre);
+    }
+    window.onload = getSvelteComponent;
+  </script>  
+</body>
+
+<style>
+#container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+#component {
+  width: 100%;
+  height: auto;
+  text-align: left;
+}
+</style>
+</html>

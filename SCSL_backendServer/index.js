@@ -6,7 +6,7 @@ const translateRouter = require('./routes/translate');
 
 const app = express();
 
-
+app.set('view engine', 'ejs');
 app.use(printRequestType);
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
