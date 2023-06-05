@@ -16,7 +16,7 @@ const removeFile = async () => {
   if(os.platform() === 'win32') { 
     try{
       await fs.unlink('.\\external_libs\\input.txt', (err) => {
-        if (err) throw err
+        if (err) console.log(err)
       })
     }catch (err) {
       console.log(err)
@@ -24,7 +24,7 @@ const removeFile = async () => {
   } else{
     try{
       await fs.unlink('./external_libs/input.txt', (err) => {
-        if (err) throw err
+        if (err) console.log(err)
       })
     }catch (err) {  
       console.log(err)
@@ -35,10 +35,10 @@ const removeFile = async () => {
 const storeTextToFile = async (text) => {
   if(os.platform() === 'win32') {
     await fs.writeFile('.\\external_libs\\input.txt', text, (err) => {
-    if (err) throw err
+    if (err) console.log(err)
   })} else {
     await fs.writeFile('./external_libs/input.txt', text, (err) => {
-      if (err) throw err
+      if (err) console.log(err)
     })
   }
 }
