@@ -8,6 +8,12 @@ router.post('/translate', async (req, res) => {
   await removeFile()  
   // console.log(req.body);
   await storeTextToFile(req.body.SCSL)
+  try {
+    const result = await callTranslationService()
+    res.json({Svelte: result})
+  } catch (err) {     
+    res.json({Svelte: err.message})
+  }
   const result = await callTranslationService()
   res.json({Svelte: result})
 })
